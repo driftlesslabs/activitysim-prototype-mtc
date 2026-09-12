@@ -1,0 +1,16 @@
+# Scope formatting checks to the new benchmark without changing model-wide hooks.
+repos:
+  - repo: local
+    hooks:
+      - id: benchmark-ruff
+        name: Benchmark lint
+        entry: ruff check
+        language: system
+        types: [python]
+        files: ^scripts/(production-benchmark\.py|benchmark/.*\.py)$
+      - id: benchmark-format
+        name: Benchmark format
+        entry: ruff format --check
+        language: system
+        types: [python]
+        files: ^scripts/(production-benchmark\.py|benchmark/.*\.py)$

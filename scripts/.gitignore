@@ -1,0 +1,10 @@
+**
+
+# Keep generated data/output ignored while exposing benchmark sources.
+!.gitignore
+!production-benchmark.py
+!production-benchmark.Dockerfile
+!benchmark/
+!benchmark/*.py
+!benchmark/README.md
+!benchmark/pre-commit.yaml

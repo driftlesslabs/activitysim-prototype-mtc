@@ -57,3 +57,10 @@ A quick and easy way to run the model for benchmarking is to use the following c
 cd activitysim-prototype-mtc-extended
 activitysim workflow performance-benchmarking
 ```
+## Docker benchmarking
+
+Use [`scripts/production-benchmark.py`](scripts/production-benchmark.py) to compare
+exact ActivitySim and Sharrow revisions in Linux containers, with per-worker
+component timings, shared-memory-aware memory sampling, and offline HTML reports.
+See the [benchmark guide](scripts/benchmark/README.md) for command examples, data
+requirements, cache preparation, and experiment comparisons.

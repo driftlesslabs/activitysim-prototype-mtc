@@ -30,6 +30,9 @@ def run_model(spec, phase):
         if spec["multiprocess"]
         else ["/model/configs"]
     )
+    configs = [
+        f"/model/overlay-{i}" for i in range(len(spec.get("config_overlay", [])))
+    ] + configs
     base = yaml.safe_load(Path("/model/configs/settings.yaml").read_text())
     # Both modes run the same component list (the repository's MP overlay differs).
     settings = {
@@ -38,7 +41,6 @@ def run_model(spec, phase):
         "num_processes": spec["processes"],
         "sharrow": "require" if spec["sharrow"] else False,
         "chunk_size": 0,
-        "chunk_training_mode": "disabled",
         "use_shadow_pricing": False,
         "trace_hh_id": None,
         "trace_od": None,

@@ -1,0 +1,201 @@
+{
+  "threshold_bytes": 16000000000,
+  "window_source": "approximate legacy completion logs",
+  "components": {
+    "school_location": {
+      "observed_peak_bytes": {
+        "5c6fae24a91a57a2d6dfc2e1dbe062a61d94545a": 19468931072.0,
+        "51e298a84276813946e1d623c9a5785e078e022f": 19711676416.0
+      },
+      "overlay_file": "school_location.yaml"
+    },
+    "workplace_location": {
+      "observed_peak_bytes": {
+        "5c6fae24a91a57a2d6dfc2e1dbe062a61d94545a": 23517712384.0,
+        "51e298a84276813946e1d623c9a5785e078e022f": 23355392000.0
+      },
+      "overlay_file": "workplace_location.yaml"
+    },
+    "auto_ownership_simulate": {
+      "observed_peak_bytes": {
+        "5c6fae24a91a57a2d6dfc2e1dbe062a61d94545a": 18196467712.0,
+        "51e298a84276813946e1d623c9a5785e078e022f": 15793872896.0
+      },
+      "overlay_file": null
+    },
+    "free_parking": {
+      "observed_peak_bytes": {
+        "5c6fae24a91a57a2d6dfc2e1dbe062a61d94545a": 18167496704.0,
+        "51e298a84276813946e1d623c9a5785e078e022f": 16409231360.0
+      },
+      "overlay_file": null
+    },
+    "cdap_simulate": {
+      "observed_peak_bytes": {
+        "5c6fae24a91a57a2d6dfc2e1dbe062a61d94545a": 18186444800.0,
+        "51e298a84276813946e1d623c9a5785e078e022f": 15805796352.0
+      },
+      "overlay_file": null
+    },
+    "mandatory_tour_frequency": {
+      "observed_peak_bytes": {
+        "5c6fae24a91a57a2d6dfc2e1dbe062a61d94545a": 18433318912.0,
+        "51e298a84276813946e1d623c9a5785e078e022f": 19239702528.0
+      },
+      "overlay_file": null
+    },
+    "mandatory_tour_scheduling": {
+      "observed_peak_bytes": {
+        "5c6fae24a91a57a2d6dfc2e1dbe062a61d94545a": 29778132992.0,
+        "51e298a84276813946e1d623c9a5785e078e022f": 29932224512.0
+      },
+      "overlay_file": "mandatory_tour_scheduling.yaml"
+    },
+    "joint_tour_frequency": {
+      "observed_peak_bytes": {
+        "5c6fae24a91a57a2d6dfc2e1dbe062a61d94545a": 28977356800.0,
+        "51e298a84276813946e1d623c9a5785e078e022f": 20945489920.0
+      },
+      "overlay_file": null
+    },
+    "joint_tour_participation": {
+      "observed_peak_bytes": {
+        "5c6fae24a91a57a2d6dfc2e1dbe062a61d94545a": 29007585280.0,
+        "51e298a84276813946e1d623c9a5785e078e022f": 20976365568.0
+      },
+      "overlay_file": null
+    },
+    "joint_tour_destination": {
+      "observed_peak_bytes": {
+        "5c6fae24a91a57a2d6dfc2e1dbe062a61d94545a": 29007585280.0,
+        "51e298a84276813946e1d623c9a5785e078e022f": 20976365568.0
+      },
+      "overlay_file": "joint_tour_destination.yaml"
+    },
+    "joint_tour_scheduling": {
+      "observed_peak_bytes": {
+        "5c6fae24a91a57a2d6dfc2e1dbe062a61d94545a": 24033517568.0,
+        "51e298a84276813946e1d623c9a5785e078e022f": 20963340288.0
+      },
+      "overlay_file": "joint_tour_scheduling.yaml"
+    },
+    "non_mandatory_tour_frequency": {
+      "observed_peak_bytes": {
+        "5c6fae24a91a57a2d6dfc2e1dbe062a61d94545a": 21618094080.0,
+        "51e298a84276813946e1d623c9a5785e078e022f": 20963340288.0
+      },
+      "overlay_file": "non_mandatory_tour_frequency.yaml"
+    },
+    "non_mandatory_tour_destination": {
+      "observed_peak_bytes": {
+        "5c6fae24a91a57a2d6dfc2e1dbe062a61d94545a": 23316131840.0,
+        "51e298a84276813946e1d623c9a5785e078e022f": 22307237888.0
+      },
+      "overlay_file": "non_mandatory_tour_destination.yaml"
+    },
+    "non_mandatory_tour_scheduling": {
+      "observed_peak_bytes": {
+        "5c6fae24a91a57a2d6dfc2e1dbe062a61d94545a": 26894761984.0,
+        "51e298a84276813946e1d623c9a5785e078e022f": 26515136512.0
+      },
+      "overlay_file": "non_mandatory_tour_scheduling.yaml"
+    },
+    "tour_mode_choice_simulate": {
+      "observed_peak_bytes": {
+        "5c6fae24a91a57a2d6dfc2e1dbe062a61d94545a": 25735225344.0,
+        "51e298a84276813946e1d623c9a5785e078e022f": 25795760128.0
+      },
+      "overlay_file": "tour_mode_choice.yaml"
+    },
+    "atwork_subtour_frequency": {
+      "observed_peak_bytes": {
+        "5c6fae24a91a57a2d6dfc2e1dbe062a61d94545a": 25735225344.0,
+        "51e298a84276813946e1d623c9a5785e078e022f": 25739800576.0
+      },
+      "overlay_file": null
+    },
+    "atwork_subtour_destination": {
+      "observed_peak_bytes": {
+        "5c6fae24a91a57a2d6dfc2e1dbe062a61d94545a": 26984529920.0,
+        "51e298a84276813946e1d623c9a5785e078e022f": 26510315520.0
+      },
+      "overlay_file": "atwork_subtour_destination.yaml"
+    },
+    "atwork_subtour_scheduling": {
+      "observed_peak_bytes": {
+        "5c6fae24a91a57a2d6dfc2e1dbe062a61d94545a": 19615449088.0,
+        "51e298a84276813946e1d623c9a5785e078e022f": 26510315520.0
+      },
+      "overlay_file": "tour_scheduling_atwork.yaml"
+    },
+    "atwork_subtour_mode_choice": {
+      "observed_peak_bytes": {
+        "5c6fae24a91a57a2d6dfc2e1dbe062a61d94545a": 19615449088.0,
+        "51e298a84276813946e1d623c9a5785e078e022f": 26348113920.0
+      },
+      "overlay_file": "tour_mode_choice.yaml"
+    },
+    "stop_frequency": {
+      "observed_peak_bytes": {
+        "5c6fae24a91a57a2d6dfc2e1dbe062a61d94545a": 19850481664.0,
+        "51e298a84276813946e1d623c9a5785e078e022f": 26348113920.0
+      },
+      "overlay_file": null
+    },
+    "trip_purpose": {
+      "observed_peak_bytes": {
+        "5c6fae24a91a57a2d6dfc2e1dbe062a61d94545a": 19829088256.0,
+        "51e298a84276813946e1d623c9a5785e078e022f": 22707122176.0
+      },
+      "overlay_file": null
+    },
+    "trip_destination": {
+      "observed_peak_bytes": {
+        "5c6fae24a91a57a2d6dfc2e1dbe062a61d94545a": 23935221760.0,
+        "51e298a84276813946e1d623c9a5785e078e022f": 22510854144.0
+      },
+      "overlay_file": "trip_destination.yaml"
+    },
+    "trip_scheduling": {
+      "observed_peak_bytes": {
+        "5c6fae24a91a57a2d6dfc2e1dbe062a61d94545a": 21959385088.0,
+        "51e298a84276813946e1d623c9a5785e078e022f": 18161025024.0
+      },
+      "overlay_file": null
+    },
+    "trip_mode_choice": {
+      "observed_peak_bytes": {
+        "5c6fae24a91a57a2d6dfc2e1dbe062a61d94545a": 21892063232.0,
+        "51e298a84276813946e1d623c9a5785e078e022f": 18161025024.0
+      },
+      "overlay_file": "trip_mode_choice.yaml"
+    },
+    "trip_purpose_and_destination": {
+      "observed_peak_bytes": {
+        "5c6fae24a91a57a2d6dfc2e1dbe062a61d94545a": 21955747840.0,
+        "51e298a84276813946e1d623c9a5785e078e022f": 17721819136.0
+      },
+      "overlay_file": null
+    },
+    "write_trip_matrices": {
+      "observed_peak_bytes": {
+        "5c6fae24a91a57a2d6dfc2e1dbe062a61d94545a": 21544333312.0,
+        "51e298a84276813946e1d623c9a5785e078e022f": 22651879424.0
+      },
+      "overlay_file": null
+    },
+    "summarize": {
+      "observed_peak_bytes": {
+        "5c6fae24a91a57a2d6dfc2e1dbe062a61d94545a": 26659864576.0,
+        "51e298a84276813946e1d623c9a5785e078e022f": 26791809024.0
+      },
+      "overlay_file": null
+    },
+    "joint_tour_composition": {
+      "observed_peak_bytes": {
+        "51e298a84276813946e1d623c9a5785e078e022f": 20940722176.0
+      },
+      "overlay_file": null
+    }
+  }
+}

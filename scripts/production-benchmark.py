@@ -66,6 +66,18 @@ def parser():
     )
     p.add_argument("--data-dir", type=Path, default=ROOT / "data_full")
     p.add_argument(
+        "--config-overlay",
+        type=Path,
+        nargs="+",
+        default=[],
+        help="extra config directories, highest priority first",
+    )
+    p.add_argument(
+        "--cache-from",
+        type=Path,
+        help="seed flow cache from an experiment with the same revisions and dependencies",
+    )
+    p.add_argument(
         "--output-dir",
         type=Path,
         required=True,
@@ -333,6 +345,8 @@ def experiment_card(run, xmax, ymax):
             "interval",
             "platform",
             "compare",
+            "config_overlay",
+            "cache_from",
         )
     )
     counts = []
@@ -547,6 +561,18 @@ def main():
         if not re.fullmatch(r"[1-9][0-9]*[bkmgBKMG]?", value):
             p.error("memory sizes must be positive integer Docker sizes, such as 16g")
     data = args.data_dir.expanduser().resolve()
+    overlays = [path.expanduser().resolve() for path in args.config_overlay]
+    for path in overlays:
+        if not path.is_dir() or output.is_relative_to(path):
+            p.error("config overlays must be existing directories outside --output-dir")
+    seed = args.cache_from.expanduser().resolve() if args.cache_from else None
+    if seed:
+        prior = read_json(seed / "experiment.json", {})
+        for key in ("activitysim_commit", "sharrow_commit"):
+            if prior.get(key) != getattr(args, key):
+                p.error(f"--cache-from must use the same {key}")
+        if not (seed / "cache/flows").is_dir():
+            p.error("--cache-from has no flow cache")
     for name in ("households.csv", "persons.csv", "land_use.csv", "skims.omx"):
         if not (data / name).is_file():
             p.error(
@@ -591,6 +617,8 @@ def main():
     (output / "model").mkdir()
     for config in ("configs", "configs_mp"):
         shutil.copytree(ROOT / config, output / "model" / config)
+    for i, path in enumerate(overlays):
+        shutil.copytree(path, output / "model" / f"overlay-{i}")
     shutil.copytree(
         ROOT / "scripts/benchmark",
         output / "runner",
@@ -652,6 +680,12 @@ def main():
             ]
         )
         (output / "pip-freeze.txt").write_text(freeze + "\n")
+        if seed:
+            if (seed / "pip-freeze.txt").read_text().strip() != freeze.strip():
+                raise ValueError("Cannot seed cache: installed dependencies differ")
+            # Only flow artifacts are reused. Full warmup still checks coverage
+            # under the new configuration before compilation-blocked measurement.
+            shutil.copytree(seed / "cache/flows", output / "cache/flows")
         if args.sharrow:
             stage = "warmup"
             print("Preparing Sharrow cache with a complete matching run…", flush=True)

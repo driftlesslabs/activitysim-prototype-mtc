@@ -26,6 +26,28 @@ spec.loader.exec_module(worker)
 
 
 class BenchmarkTests(unittest.TestCase):
+    def test_explicit_overlay_preserves_normal_model_settings(self):
+        """The additive overlay must retain every base parameter and specification."""
+        from activitysim.core.workflow import State
+
+        root = HERE.parents[1]
+        normal = State.make_default(working_dir=root, configs_dir=["configs"])
+        overlay = State.make_default(
+            working_dir=root,
+            configs_dir=["configs_explicit_chunk", "configs_mp", "configs"],
+        )
+        self.assertEqual(normal.settings.chunk_training_mode, "disabled")
+        self.assertEqual(overlay.settings.chunk_training_mode, "explicit")
+        for path in (root / "configs_explicit_chunk").glob("*.yaml"):
+            if path.name == "settings.yaml":
+                continue
+            original = normal.filesystem.read_model_settings(path.name)
+            merged = overlay.filesystem.read_model_settings(path.name)
+            self.assertEqual(merged["explicit_chunk"], 10000)
+            for key, value in original.items():
+                if key not in ("inherit_settings", "source_file_paths"):
+                    self.assertEqual(merged[key], value, (path.name, key))
+
     def make_run(self, root, label, times, success=True):
         """Construct raw artifacts with the same schema emitted by workers."""
         root.mkdir()

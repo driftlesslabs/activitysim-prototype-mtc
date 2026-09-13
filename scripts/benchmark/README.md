@@ -32,6 +32,10 @@ sliced MP phases, not a cap on the coordinator plus all child processes. Serial
 initialization/finalization phases have one observation. Defaults are 1,000
 households, Sharrow enabled, 16 GiB memory, 8 GiB `/dev/shm`, and 0.5 second sampling.
 Choose limits appropriate for the data and worker count; **chunking is disabled**.
+That is the base model default. Use `--config-overlay configs_explicit_chunk` to
+activate the supplied explicit row limits. Additional overlay directories are
+searched in the listed order before `configs_mp` and `configs`, and are copied
+into each experiment's model snapshot. The runner honors their chunking mode.
 `--platform linux/amd64` or `linux/arm64` can select an architecture; omitted means
 Docker's native architecture. Emulated and native timings are not equivalent.
 
@@ -66,6 +70,12 @@ cache miss and marks the experiment failed. Ordinary non-flow Numba compilation
 and disk-cache loading remain part of measured runtime. No warmup runs when
 Sharrow is disabled. Both phases use `sharrow=require` when enabled; that setting
 alone does not prohibit compilation, which is why the additional guard exists.
+
+Optionally use `--cache-from /path/to/previous-experiment` to seed the flow cache
+before warmup. Both package commits and the installed dependency manifest must
+match. A complete warmup still runs with the new settings to build any missing
+flow signatures; the measured run still rejects compilation. Only flow artifacts
+are reused, not model outputs or checkpoints.
 
 Both modes use the same base component list, excluding the diagnostic
 `track_skim_usage`. Shadow pricing, trace households/ODs, and profiling are
